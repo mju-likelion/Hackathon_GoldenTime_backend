@@ -1,4 +1,4 @@
-# Hackathon_GoldenTime_backend
+# GoldenTime_backend
 
 ## **Commit convention** 
 Feat: 새로운 기능 추가  
