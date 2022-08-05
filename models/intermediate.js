@@ -1,21 +1,21 @@
 import { Sequelize } from "sequelize";
 
-module.exports = class department extends Sequelize.Model {
+module.exports = class intermediate extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
+        // hospitalId: {
+        //   type: Sequelize.STRING(100),
+        // },
         deptEng: {
-          type: Sequelize.STRING(100),
-        },
-        deptKor: {
           type: Sequelize.STRING(100),
         },
       },
       {
         sequelize,
         timestamps: false,
-        modelName: "Department",
-        tableName: "department",
+        modelName: "Intermediate",
+        tableName: "intermediate",
         freezeTableName: true,
         paranoid: false,
         charset: "utf8mb4",

@@ -1,9 +1,10 @@
 import express from "express";
-import dbStore from "./dbStore";
 import hospital from "./hospital";
+import information from "./information";
 
 const app = express();
-app.use("/dbStore", dbStore);
+
 app.use("/hospital", hospital);
+app.use("/information", information);
 
 export default app;
