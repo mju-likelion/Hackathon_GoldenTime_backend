@@ -26,6 +26,7 @@ module.exports = class Hospital extends Sequelize.Model {
         modelName: "Hospital",
         tableName: "hospital",
         paranoid: false,
+        freezeTableName: true,
         charset: "utf8mb4",
         collate: "utf8mb4_general_ci",
       }
