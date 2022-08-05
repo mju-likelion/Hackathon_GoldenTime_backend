@@ -12,7 +12,7 @@ app.get("/:symptom", async (req, res) => {
     },
   });
   if (!inform.length) {
-    // 조건에 맞는 병원이 없는 경우
+    // 조건에 맞는 병원이 없는 경우!
     return res.send({
       error: "There is no information to meet the conditions.",
     });
