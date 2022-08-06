@@ -6,32 +6,24 @@ const app = express();
 
 // 구별 병원조회
 app.get("/inquire", async (req, res) => {
-  const { address } = req.query;
-  const { symptom } = req.query;
+  const { address, symptom } = req.query;
   const attrList = ["dutyName", "dutyAddr", "dutyTel3", "wgs84Lat", "wgs84Lon"];
   let findHospital;
 
-  // eslint-disable-next-line eqeqeq
-  if ((symptom == "미입력") & (address == "미입력")) {
-    findHospital = await Hospital.findAll({
-      attributes: attrList,
-    });
-    return res.send(findHospital);
-  }
   // 사용자가 증상을 입력하지 않은 경우
-  // eslint-disable-next-line eqeqeq
-  if (symptom == "미입력") {
+  if (!symptom) {
     findHospital = await Hospital.findAll({
       attributes: attrList,
       where: {
         dutyAddr: {
-          [Op.like]: `%${address}%`,
+          [Op.like]: address ? `%${address}%` : `%`,
         },
       },
     });
   }
+
   // 사용자가 증상을 입력한 경우
-  else if (symptom) {
+  else {
     findHospital = await Hospital.findAll({
       include: [
         {
@@ -62,19 +54,18 @@ app.get("/inquire", async (req, res) => {
       },
     });
   }
+  // 조건에 맞는 병원이 없는 경우
   if (!findHospital.length) {
-    // 조건에 맞는 병원이 없는 경우
-    return res.send({
+    return res.json({
       error: "Can't find a hospital that meets your criteria",
     });
   }
-  res.send(findHospital);
+  res.json(findHospital);
 });
 
 // 병원 상세 조회
 app.get("/detail", async (req, res) => {
-  const { wgs84Lon } = req.query;
-  const { wgs84Lat } = req.query;
+  const { wgs84Lon, wgs84Lat } = req.query;
 
   const findHospital = await Hospital.findAll({
     attributes: ["dutyName", "dutyAddr", "dutyTel3"],
