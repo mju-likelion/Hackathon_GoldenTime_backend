@@ -19,6 +19,9 @@ module.exports = class Hospital extends Sequelize.Model {
         wgs84Lon: {
           type: Sequelize.STRING(100),
         },
+        image: {
+          type: Sequelize.STRING(500),
+        },
       },
       {
         sequelize,

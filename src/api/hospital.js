@@ -7,7 +7,14 @@ const app = express();
 // 구별 병원조회
 app.get("/inquire", async (req, res) => {
   const { address, symptom } = req.query;
-  const attrList = ["dutyName", "dutyAddr", "dutyTel3", "wgs84Lat", "wgs84Lon"];
+  const attrList = [
+    "dutyName",
+    "dutyAddr",
+    "dutyTel3",
+    "wgs84Lat",
+    "wgs84Lon",
+    "image",
+  ];
   let findHospital;
 
   // 사용자가 증상을 입력하지 않은 경우
@@ -68,7 +75,7 @@ app.get("/detail", async (req, res) => {
   const { wgs84Lon, wgs84Lat } = req.query;
 
   const findHospital = await Hospital.findAll({
-    attributes: ["dutyName", "dutyAddr", "dutyTel3"],
+    attributes: ["dutyName", "dutyAddr", "dutyTel3", "image"],
     where: {
       wgs84Lon: {
         [Op.like]: `${wgs84Lon}%`,

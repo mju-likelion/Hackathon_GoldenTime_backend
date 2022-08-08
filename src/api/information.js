@@ -18,8 +18,8 @@ app.get("/:symptom", async (req, res) => {
       error: "There is no information to meet the conditions.",
     });
   }
-  inform[0].notice = inform[0].notice.split("/");
-  inform[0].firstAid = inform[0].firstAid.split("/");
+  // inform[0].notice = inform[0].notice.split("/");
+  // inform[0].firstAid = inform[0].firstAid.split("/");
   res.json({ data: inform });
 });
 
