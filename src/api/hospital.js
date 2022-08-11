@@ -60,7 +60,7 @@ app.get("/inquire", async (req, res) => {
       attributes: attrList,
       where: {
         dutyAddr: {
-          [Op.like]: `%${address}%`,
+          [Op.like]: address ? `%${address}%` : `%`,
         },
       },
     });
