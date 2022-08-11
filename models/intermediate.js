@@ -4,9 +4,6 @@ module.exports = class intermediate extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
-        // hospitalId: {
-        //   type: Sequelize.STRING(100),
-        // },
         deptEng: {
           type: Sequelize.STRING(100),
         },

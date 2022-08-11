@@ -16,6 +16,12 @@ module.exports = class Symptom extends Sequelize.Model {
         notice: {
           type: Sequelize.STRING(500),
         },
+        firstImage: {
+          type: Sequelize.STRING(100),
+        },
+        noticeImage: {
+          type: Sequelize.STRING(100),
+        },
       },
       {
         sequelize,

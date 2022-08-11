@@ -44,15 +44,19 @@ app.get("/inquire", async (req, res) => {
                   where: {
                     symptomName: symptom,
                   },
+                  required: true,
                   attributes: [],
                 },
               ],
+              required: true,
               attributes: [],
             },
           ],
+          required: true,
           attributes: [],
         },
       ],
+      required: true,
       attributes: attrList,
       where: {
         dutyAddr: {
@@ -61,6 +65,7 @@ app.get("/inquire", async (req, res) => {
       },
     });
   }
+
   // 조건에 맞는 병원이 없는 경우
   if (!findHospital.length) {
     return res.json({
@@ -89,3 +94,8 @@ app.get("/detail", async (req, res) => {
 });
 
 export default app;
+
+// 증상입력	 증상미입력
+
+// 구 입력	  정상	  모든 구
+// 구 미입력	 뭐하지   전체병원
